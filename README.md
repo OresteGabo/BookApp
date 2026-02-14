@@ -1,65 +1,60 @@
-Last login: Fri Feb  6 22:18:50 on ttys041
-OMG--Pro:sujet_examen2 muhirwagabooreste$ ls
-sujet_examen2		sujet_examen2.zip	sujet_examen2UITests
-sujet_examen2.xcodeproj	sujet_examen2Tests
-OMG--Pro:sujet_examen2 muhirwagabooreste$ pwd
-/Users/muhirwagabooreste/xcodeProjects/sujet_examen2
-OMG--Pro:sujet_examen2 muhirwagabooreste$ git status
-On branch main
-Your branch is up to date with 'origin/main'.
+# Sujet Examen -- Application SwiftUI
 
-nothing to commit, working tree clean
-OMG--Pro:sujet_examen2 muhirwagabooreste$ tree
-.
-├── sujet_examen2
-│   ├── Assets.xcassets
-│   │   ├── AccentColor.colorset
-│   │   │   └── Contents.json
-│   │   ├── AppIcon.appiconset
-│   │   │   └── Contents.json
-│   │   └── Contents.json
-│   ├── BookContentLoader.swift
-│   ├── Models
-│   │   └── Book.swift
-│   ├── Services
-│   │   └── BookService.swift
-│   ├── ViewModels
-│   │   ├── BookViewModel.swift
-│   │   ├── ContentView.swift
-│   │   └── FavoritesViewModel.swift
-│   ├── Views
-│   │   ├── AllBooksView.swift
-│   │   ├── BookDetailView.swift
-│   │   ├── BookRowView.swift
-│   │   ├── FavoritesView.swift
-│   │   ├── FilterBookshelvesView.swift
-│   │   └── SearchBooksView.swift
-│   ├── readme.pdf
-│   └── sujet_examen2App.swift
-├── sujet_examen2.xcodeproj
-│   ├── project.pbxproj
-│   ├── project.xcworkspace
-│   │   ├── contents.xcworkspacedata
-│   │   ├── xcshareddata
-│   │   │   └── swiftpm
-│   │   │       └── configuration
-│   │   └── xcuserdata
-│   │       └── muhirwagabooreste.xcuserdatad
-│   │           ├── Bookmarks
-│   │           │   └── bookmarks.plist
-│   │           └── UserInterfaceState.xcuserstate
-│   └── xcuserdata
-│       └── muhirwagabooreste.xcuserdatad
-│           ├── xcdebugger
-│           │   └── Breakpoints_v2.xcbkptlist
-│           └── xcschemes
-│               └── xcschememanagement.plist
-├── sujet_examen2.zip
-├── sujet_examen2Tests
-│   └── sujet_examen2Tests.swift
-└── sujet_examen2UITests
-    ├── sujet_examen2UITests.swift
-    └── sujet_examen2UITestsLaunchTests.swift
+## Informations
 
-23 directories, 27 files
-OMG--Pro:sujet_examen2 muhirwagabooreste$ 
+| Catégorie | Valeur |
+|-----------|--------|
+| **Auteurs** | MUHIRWA GABO Oreste |
+| **Xcode** | 17.x |
+| **Langage** | Swift 5 (SwiftUI) |
+| **Architecture** | MVVM |
+
+---
+
+## Architecture
+
+L'application suit le modèle **MVVM**, séparant clairement les différentes responsabilités :
+
+- **Models** : structures de données (`Book.swift`)  
+- **Services** : accès API Gutendex (`BookService.swift`)  
+- **ViewModels** : gestion d'état et logique d'affichage (`BookViewModel`, `FavoritesViewModel`)  
+- **Views** : interface utilisateur (`AllBooksView`, `BookDetailView`, `FavoritesView`, etc.)
+
+Le flux de données est **unidirectionnel** :  
+```
+View → ViewModel → Service → ViewModel → View
+```
+
+---
+
+## Filtrage par Bookshelves
+
+L'application inclut une fonctionnalité de **filtrage avancé** permettant d'affiner l'affichage des livres selon leurs catégories (bookshelves).
+
+### Fonctionnalités principales :
+
+- Extraction automatique des catégories depuis les livres chargés  
+- Sélection / désélection par catégorie  
+- Bouton **Sélectionner Tout / Désélectionner Tout**  
+- Indicateur du nombre de catégories actives  
+- Filtrage appliqué en temps réel sur la liste des livres  
+- Bouton **Reload Books** pour forcer un rechargement des données en cas d'erreur API  
+
+> Cette amélioration rend la navigation plus rapide, claire et personnalisable.
+
+---
+
+## Usage
+
+1. Ouvrir le projet dans **Xcode 17.x**  
+2. Compiler et lancer l'application sur un simulateur ou un appareil réel  
+3. Explorer les livres, appliquer des filtres et gérer vos favoris  
+
+---
+
+## Notes
+
+- L'application utilise l'API **Gutendex** pour récupérer les livres  
+- L'architecture MVVM garantit une séparation claire entre UI, logique métier et accès aux données  
+- Le filtrage en temps réel améliore l'expérience utilisateur et permet une navigation intuitive
+
